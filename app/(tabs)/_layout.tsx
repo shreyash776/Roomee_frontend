@@ -27,8 +27,8 @@ const TabLayout: React.FC = () => {
       tabBarActiveTintColor: tw.color('text-violet-600'),
       tabBarInactiveTintColor: tw.color('text-gray-500'),
       headerShown: false,
-      tabBarStyle: tw`bg-white border-t-0 elevation-2 h-18 px-6 pb-4 rounded-t-xl absolute bottom-4 left-4 right-4`,
-      tabBarItemStyle: tw`rounded-xl`, // Ensures rounded corners
+      tabBarStyle: tw`bg-black border-0 border-color-black elevation-z h-15 px-6  rounded-3xl absolute bottom-4 left-4 right-4`,
+      tabBarItemStyle: tw` border-0 rounded-xl`, // Ensures rounded corners
       tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color
       tabBarLabelStyle: tw`text-xs`,
     }}
@@ -41,11 +41,11 @@ const TabLayout: React.FC = () => {
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'home' : 'home-outline'}
-              size={24}
+              size={20}
               color={color}
             />
           ),
-          tabBarLabelStyle: tw`text-xs`,
+          tabBarLabelStyle: tw`text-xs rounded-2xl`,
           tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
         }}
       />
