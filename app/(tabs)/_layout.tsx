@@ -1,23 +1,20 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { View, TouchableOpacity, Text,  ViewStyle, StyleProp,GestureResponderEvent } from 'react-native';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { TouchableOpacity, ViewStyle, StyleProp } from 'react-native';
 import tw from 'twrnc';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Colors } from '@/constants/Colors';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout: React.FC = () => {
   interface TabBarButtonProps {
-    children: any; 
-  onPress: any; 
+    children: React.ReactNode;
+    onPress: () => void;
     style?: StyleProp<ViewStyle>;
   }
-  
-  const TabBarButton: React.FC<TabBarButtonProps> = ({ children, onPress, style }) => (
+
+  const TabBarButton: React.FC<TabBarButtonProps> = ({ children, onPress }) => (
     <TouchableOpacity
-      style={tw`-top-7 justify-center items-center bg-indigo-600  w-18 h-18 rounded-full shadow-lg shadow-black`}
+      style={tw`-top-7 justify-center items-center bg-violet-600 w-18 h-18 rounded-full shadow-lg shadow-black`}
       onPress={onPress}
     >
       {children}
@@ -25,69 +22,83 @@ export default function TabLayout() {
   );
 
   return (
-    <Tabs 
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: 'white',
-          borderTopWidth: 0,
-          elevation: 2,
-          height: 70,
-          paddingHorizontal: 25,
-          paddingBottom: 10,
-          borderRadius: 30,
-          position: 'absolute',
-          bottom: 10,
-          left: 25,
-          right: 25,
-        },
-      }}
+    <Tabs
+    screenOptions={{
+      tabBarActiveTintColor: tw.color('text-violet-600'),
+      tabBarInactiveTintColor: tw.color('text-gray-500'),
+      headerShown: false,
+      tabBarStyle: tw`bg-white border-t-0 elevation-2 h-18 px-6 pb-4 rounded-t-xl absolute bottom-4 left-4 right-4`,
+      tabBarItemStyle: tw`rounded-xl`, // Ensures rounded corners
+      tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color
+      tabBarLabelStyle: tw`text-xs`,
+    }}
+    initialRouteName="home"
     >
       <Tabs.Screen
-        name="demo2"
+        name="home"
         options={{
-          title: "Emergency",
-          tabBarIcon: ({ color, focused }) => (
-            <Feather name="bell" 
-            size={24}  
-            color={focused ? tw.color('bg-indigo-600') : color}
-            />
-          ),
-          tabBarLabelStyle: tw`text-xs`, 
-          tabBarActiveTintColor: tw.color('bg-indigo-600'),
-        }}
-      />
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Explore",
+          title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={focused ? "compass" : "compass-outline"}
-              size={48}
-              color="white"
-            />
-          ),
-          tabBarLabel: () => null, 
-          tabBarButton: (props:any) => <TabBarButton {...props} />,
-        }}
-      />
-      <Tabs.Screen
-        name="demo1"
-        options={{
-          title: "Chatbot",
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name="chatbubble-outline"
+              name={focused ? 'home' : 'home-outline'}
               size={24}
-              color={focused ? tw.color('bg-indigo-600') : color}
+              color={color}
             />
           ),
-          tabBarLabelStyle: tw`text-xs`, 
-          tabBarActiveTintColor: tw.color('bg-indigo-600'),
+          tabBarLabelStyle: tw`text-xs`,
+          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+        }}
+      />
+
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: 'Search',
+          tabBarIcon: ({ color, focused }) => (
+            <Feather
+              name="search"
+              size={24}
+              color={color}
+            />
+          ),
+          tabBarLabelStyle: tw`text-xs`,
+          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+        }}
+      />
+
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'chatbubble' : 'chatbubble-outline'}
+              size={24}
+              color={color}
+            />
+          ),
+          tabBarLabelStyle: tw`text-xs`,
+          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'person' : 'person-outline'}
+              size={24}
+              color={color}
+            />
+          ),
+          tabBarLabelStyle: tw`text-xs`,
+          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabLayout;
