@@ -27,7 +27,7 @@ const TabLayout: React.FC = () => {
       tabBarActiveTintColor: tw.color('text-violet-600'),
       tabBarInactiveTintColor: tw.color('text-gray-500'),
       headerShown: false,
-      tabBarStyle: tw`bg-black border-0 border-color-black elevation-z h-15 px-6  rounded-3xl absolute bottom-4 left-4 right-4`,
+      tabBarStyle: tw`bg-text-violet-600 border-1 border-color-black elevation-z h-15 px-6  rounded-3xl `,
       tabBarItemStyle: tw` border-0 rounded-xl`, // Ensures rounded corners
       tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color
       tabBarLabelStyle: tw`text-xs`,
@@ -46,7 +46,7 @@ const TabLayout: React.FC = () => {
             />
           ),
           tabBarLabelStyle: tw`text-xs rounded-2xl`,
-          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+          // tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
         }}
       />
 
@@ -62,7 +62,7 @@ const TabLayout: React.FC = () => {
             />
           ),
           tabBarLabelStyle: tw`text-xs`,
-          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+          // tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
         }}
       />
 
@@ -78,7 +78,7 @@ const TabLayout: React.FC = () => {
             />
           ),
           tabBarLabelStyle: tw`text-xs`,
-          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+          // tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
         }}
       />
 

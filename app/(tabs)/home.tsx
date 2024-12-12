@@ -1,20 +1,35 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import tw from 'twrnc';
 
 const HomeScreen: React.FC = () => {
   return (
-    <View style={tw`flex-1 bg-white pt-12 px-6`}>
+    <ScrollView 
+      contentContainerStyle={tw`bg-white pt-12 px-6`} 
+      showsVerticalScrollIndicator={false}
+    >
       {/* Heading */}
       <Text style={tw`text-4xl font-extrabold text-black mb-4`}>
         Join Millions of Verified Renters
       </Text>
-      
+
       {/* Subtext */}
-      <Text style={tw`text-base text-black`}>
+      <Text style={tw`text-base text-black mb-6`}>
         Roomi connects you to other verified renters in your area that are looking for roommates and posting rooms you can't find anywhere else. Stop stressing and let us help you find a better place to live!
       </Text>
-    </View>
+
+      {/* Images */}
+      <Image
+        source={require('../../assets/images/home.png')}
+        style={tw`w-full h-60 rounded-lg mb-6`}
+        resizeMode="cover"
+      />
+      <Image
+        source={require('../../assets/images/home.png')}
+        style={tw`w-full h-60 rounded-lg mb-6`}
+        resizeMode="cover"
+      />
+    </ScrollView>
   );
 };
 
