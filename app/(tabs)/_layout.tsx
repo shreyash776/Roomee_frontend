@@ -24,16 +24,22 @@ const TabLayout: React.FC = () => {
   return (
     <Tabs
     screenOptions={{
-      tabBarActiveTintColor: tw.color('text-violet-600'),
+      tabBarActiveTintColor: tw.color('indigo-600'),
       tabBarInactiveTintColor: tw.color('text-gray-500'),
       headerShown: false,
-      tabBarStyle: tw`bg-text-violet-600 border-1 border-color-black elevation-z h-15 px-6  rounded-3xl `,
+      tabBarStyle: tw` bg-white border-1 border-color-black elevation-z h-15   rounded-3xl  bottom-4 w-11/13.5  shadow-lg   mx-auto self-center`,
       tabBarItemStyle: tw` border-0 rounded-xl`, // Ensures rounded corners
-      tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color
+      // tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color 
       tabBarLabelStyle: tw`text-xs`,
-    }}
+    }} 
     initialRouteName="home"
     >
+      <Tabs.Screen
+        name="index"
+        options={{
+          href: null, // This hides the tab
+        }}
+      />
       <Tabs.Screen
         name="home"
         options={{
