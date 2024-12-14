@@ -3,22 +3,11 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import tw from 'twrnc';
 import RoomCard from '../components/RoomCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { dummyData } from '../data/dummyData'; // Adjust the import path as needed
+
 const HomeScreen: React.FC = () => {
-  const dummyData = {
-    profilePic: 'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    userName: 'John Doe',
-    images: [
-      'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    ],
-    rent: '1200',
-    specifications: 'Private Room • Three-Bedroom • Apartment',
-    address: '123, Elm Street, Springfield',
-  };
   return (
-   
-     <ScrollView 
+    <ScrollView 
       contentContainerStyle={tw`bg-white pt-12 px-6`} 
       showsVerticalScrollIndicator={false}
     >
@@ -39,17 +28,24 @@ const HomeScreen: React.FC = () => {
         resizeMode="cover"
       />
       
-      <Text style={tw`text-2xl font-extrabold text-black mb-4  `}>Recently Posted </Text>
-       <RoomCard
-          profilePic={dummyData.profilePic}
-          userName={dummyData.userName}
-          images={dummyData.images}
-          rent={dummyData.rent}
-          specifications={dummyData.specifications}
-          address={dummyData.address}
+      {/* Recently Posted Section */}
+      <Text style={tw`text-2xl font-extrabold text-black mb-4`}>
+        Recently Posted 
+      </Text>
+
+      {/* Room Cards */}
+      {dummyData.map((data, index) => (
+        <RoomCard
+          key={index}
+          profilePic={data.profilePic}
+          userName={data.userName}
+          images={data.images}
+          rent={data.rent}
+          specifications={data.specifications}
+          address={data.address}
         />
+      ))}
     </ScrollView>
-   
   );
 };
 
