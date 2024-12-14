@@ -5,6 +5,8 @@ import tw from 'twrnc';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+
+
 const TabLayout: React.FC = () => {
   interface TabBarButtonProps {
     children: React.ReactNode;
@@ -27,7 +29,7 @@ const TabLayout: React.FC = () => {
       tabBarActiveTintColor: tw.color('indigo-600'),
       tabBarInactiveTintColor: tw.color('text-gray-500'),
       headerShown: false,
-      tabBarStyle: tw` bg-white border-1 border-color-black elevation-z h-15   rounded-3xl  bottom-4 w-11/13.5  shadow-lg   mx-auto self-center`,
+      tabBarStyle: tw` bg-white border-1 border-color-black elevation-z h-15   rounded-3xl  bottom-4 w-11/13.5  shadow-lg   mx-auto self-center `,
       tabBarItemStyle: tw` border-0 rounded-xl`, // Ensures rounded corners
       // tabBarActiveBackgroundColor: tw.color('bg-violet-100'), // Active background color 
       tabBarLabelStyle: tw`text-xs`,
@@ -100,7 +102,7 @@ const TabLayout: React.FC = () => {
             />
           ),
           tabBarLabelStyle: tw`text-xs`,
-          tabBarActiveBackgroundColor: tw.color('bg-violet-100'),
+          
         }}
       />
     </Tabs>
