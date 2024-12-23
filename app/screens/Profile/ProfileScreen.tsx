@@ -10,7 +10,7 @@ const ProfileScreen: React.FC = () => {
     maxPrice: '',
     timeline: '',
     location: '',
-    profilePic: null,
+    profilePic:'',
   });
 
   const handleInputChange = (key: string, value: string) => {
@@ -19,7 +19,7 @@ const ProfileScreen: React.FC = () => {
 
   const handleProfilePicUpload = () => {
     // Placeholder for profile picture upload logic
-    setUser({ ...user, profilePic: 'https://via.placeholder.com/150' });
+    setUser({ ...user, profilePic: 'https://images.pexels.com/photos/1022926/pexels-photo-1022926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' });
   };
 
   return (
