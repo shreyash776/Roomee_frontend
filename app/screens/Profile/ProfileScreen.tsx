@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, Button, FlatList } from 'react-native';
 import tw from 'twrnc';
 import { Ionicons } from '@expo/vector-icons';
+import BackArrowButton from '../../components/BackArrowButton'; 
 import * as ImagePicker from 'expo-image-picker';
 
 const ProfileScreen: React.FC = () => {
@@ -53,11 +54,8 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View style={tw`flex-1 p-4 bg-white`}>
-      {/* Back Arrow */}
-      <TouchableOpacity style={tw`mb-4`} onPress={() => alert('Go back')}>
-        <Ionicons name="arrow-back" size={24} color="black" />
-      </TouchableOpacity>
-
+       {/* Back Arrow */}
+       <BackArrowButton onPress={() => alert('Go back')} />
       {/* Profile Header */}
       <View style={tw`flex-row items-center mb-6`}>
         <TouchableOpacity onPress={handleProfilePicUpload} style={tw`mr-4`}>
