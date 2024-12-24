@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, Button, FlatList } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, Button, FlatList ,ScrollView } from 'react-native';
 import tw from 'twrnc';
 import { Ionicons } from '@expo/vector-icons';
 import BackArrowButton from '../../components/BackArrowButton'; 
 import * as ImagePicker from 'expo-image-picker';
+
 
 const ProfileScreen: React.FC = () => {
   const [user, setUser] = useState({
@@ -53,7 +54,8 @@ const ProfileScreen: React.FC = () => {
   };
 
   return (
-    <View style={tw`flex-1 p-4 bg-white`}>
+   <ScrollView>
+     <View style={tw`flex-1 p-4 bg-white mb-10`}>
       {/* Back Arrow */}
       <BackArrowButton />
       {/* Profile Header */}
@@ -162,6 +164,7 @@ const ProfileScreen: React.FC = () => {
       {/* Save Button */}
       <Button title="Save Profile" onPress={() => alert('Profile saved!')} />
     </View>
+   </ScrollView>
   );
 };
 

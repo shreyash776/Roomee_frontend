@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import tw from 'twrnc';
+import tw from 'twrnc'; 
 import RoomCard from '../components/RoomCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { dummyData } from '../data/dummyData'; // Adjust the import path as needed
@@ -24,7 +24,7 @@ const HomeScreen: React.FC = () => {
       {/* Images */}
       <Image
         source={require('../../assets/images/home.png')}
-        style={tw`w-full h-60 rounded-lg mb-6`}
+        style={tw`w-full h-60 rounded-lg mb-10`}
         resizeMode="cover"
       />
       
