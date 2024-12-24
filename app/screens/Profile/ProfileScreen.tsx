@@ -54,8 +54,8 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View style={tw`flex-1 p-4 bg-white`}>
-       {/* Back Arrow */}
-       <BackArrowButton onPress={() => alert('Go back')} />
+      {/* Back Arrow */}
+      <BackArrowButton />
       {/* Profile Header */}
       <View style={tw`flex-row items-center mb-6`}>
         <TouchableOpacity onPress={handleProfilePicUpload} style={tw`mr-4`}>
@@ -75,80 +75,88 @@ const ProfileScreen: React.FC = () => {
         </View>
       </View>
 
-      {/* User Information */}
-      <View>
+      {/* Basic Info Section */}
+      <View style={tw`p-4 bg-gray-100 rounded-lg mb-4`}>
+        <Text style={tw`text-lg font-bold mb-4`}>BASIC INFO:</Text>
+
         {/* First Name and Last Name */}
-        <View style={tw`flex-row justify-between mb-4`}>
+        <View style={tw`mb-4`}>
+          <Text style={tw`text-gray-700 mb-1`}>First Name</Text>
           <TextInput
-            placeholder="First Name"
-            style={tw`border border-gray-300 rounded p-2 w-[48%]`}
+            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
             value={user.firstName}
             onChangeText={(text) => handleInputChange('firstName', text)}
           />
+        </View>
+
+        <View style={tw`mb-4`}>
+          <Text style={tw`text-gray-700 mb-1`}>Last Name</Text>
           <TextInput
-            placeholder="Last Name"
-            style={tw`border border-gray-300 rounded p-2 w-[48%]`}
+            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
             value={user.lastName}
             onChangeText={(text) => handleInputChange('lastName', text)}
           />
         </View>
 
         {/* Gender and DOB */}
-        <View style={tw`flex-row justify-between mb-4`}>
+        <View style={tw`mb-4`}>
+          <Text style={tw`text-gray-700 mb-1`}>Gender</Text>
           <TextInput
-            placeholder="Gender"
-            style={tw`border border-gray-300 rounded p-2 w-[48%]`}
+            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
             value={user.gender}
             onChangeText={(text) => handleInputChange('gender', text)}
           />
+        </View>
+
+        <View style={tw`mb-4`}>
+          <Text style={tw`text-gray-700 mb-1`}>DOB (YYYY-MM-DD)</Text>
           <TextInput
-            placeholder="DOB (YYYY-MM-DD)"
-            style={tw`border border-gray-300 rounded p-2 w-[48%]`}
+            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
             value={user.dob}
             onChangeText={(text) => handleInputChange('dob', text)}
           />
         </View>
 
         {/* Occupation */}
-        <TextInput
-          placeholder="Occupation"
-          style={tw`border border-gray-300 rounded p-2 mb-4`}
-          value={user.occupation}
-          onChangeText={(text) => handleInputChange('occupation', text)}
-        />
-
-        {/* Lifestyle Tags */}
-        <Text style={tw`text-lg font-bold mb-2`}>Lifestyle:</Text>
-        <View style={tw`flex-row items-center mb-4`}>
+        <View style={tw`mb-4`}>
+          <Text style={tw`text-gray-700 mb-1`}>Occupation</Text>
           <TextInput
-            placeholder="Add a tag (e.g., Party Lover)"
-            style={tw`border border-gray-300 rounded p-2 flex-1`}
-            value={tagInput}
-            onChangeText={setTagInput}
-            onSubmitEditing={handleAddTag}
+            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            value={user.occupation}
+            onChangeText={(text) => handleInputChange('occupation', text)}
           />
-          <TouchableOpacity
-            onPress={handleAddTag}
-            style={tw`ml-2 bg-blue-500 p-2 rounded`}>
-            <Text style={tw`text-white`}>Add</Text>
-          </TouchableOpacity>
         </View>
+      </View>
 
-        {/* Display Tags */}
-        <FlatList
-          data={user.lifestyleTags}
-          keyExtractor={(item, index) => `${item}-${index}`}
-          horizontal
-          renderItem={({ item }) => (
-            <View style={tw`flex-row items-center bg-gray-200 rounded-full px-3 py-1 mr-2`}>
-              <Text style={tw`mr-2`}>{item}</Text>
-              <TouchableOpacity onPress={() => handleRemoveTag(item)}>
-                <Ionicons name="close-circle" size={20} color="red" />
-              </TouchableOpacity>
-            </View>
-          )}
-          contentContainerStyle={tw`flex-row`}
+      {/* Lifestyle Tags Section */}
+      <Text style={tw`text-lg font-bold mb-2`}>Lifestyle:</Text>
+
+      <FlatList
+        data={user.lifestyleTags}
+        keyExtractor={(item, index) => `${item}-${index}`}
+        horizontal
+        contentContainerStyle={tw`mb-4 flex-row`}
+        renderItem={({ item }) => (
+          <View style={tw`flex-row items-center bg-gray-100 border border-gray-400 rounded-full px-3 py-1 mr-2`}>
+            <Text style={tw`mr-2 text-gray-700`}>{item}</Text>
+            <TouchableOpacity onPress={() => handleRemoveTag(item)} style={tw`bg-gray-300 rounded-full p-1`}>
+              <Ionicons name="close" size={16} color="black" />
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+
+      <View style={tw`flex-row items-center mb-4`}>
+        <TextInput
+          placeholder="Add a tag (e.g., Party Lover)"
+          style={tw`bg-gray-100 border border-gray-400 rounded p-2 flex-1`}
+          value={tagInput}
+          onChangeText={setTagInput}
+          onSubmitEditing={handleAddTag}
         />
+        <TouchableOpacity onPress={handleAddTag} style={tw`ml-2 bg-blue-500 p-2 rounded`}>
+          <Text style={tw`text-white`}>Add</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Save Button */}

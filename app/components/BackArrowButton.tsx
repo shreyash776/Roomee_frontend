@@ -17,7 +17,7 @@ const BackArrowButton: React.FC<BackArrowButtonProps> = ({
 
   return (
     <TouchableOpacity
-      style={tw`p-2 bg-slate-100 rounded-full w-10 mb-4`}
+      style={tw`p-2 bg-slate-100 rounded-full shadow-lg w-10 mb-4`}
       onPress={() => router.back()} // Use router.back() to navigate to the previous screen
     >
       <Ionicons name="arrow-back" size={size} color={color} />
