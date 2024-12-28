@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import tw from 'twrnc'; 
+import { Ionicons } from '@expo/vector-icons'; 
 import RoomCard from '../components/RoomCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { dummyData } from '../data/dummyData'; // Adjust the import path as needed

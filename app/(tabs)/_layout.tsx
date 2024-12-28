@@ -44,7 +44,7 @@ const TabLayout: React.FC = () => {
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Home',
+          title: 'HOME',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'home' : 'home-outline'}
@@ -60,7 +60,7 @@ const TabLayout: React.FC = () => {
       <Tabs.Screen
         name="search"
         options={{
-          title: 'Search',
+          title: 'ROOMS',
           tabBarIcon: ({ color, focused }) => (
             <Feather
               name="search"
@@ -76,7 +76,7 @@ const TabLayout: React.FC = () => {
       <Tabs.Screen
         name="chat"
         options={{
-          title: 'Chat',
+          title: 'ROOMMATE',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'chatbubble' : 'chatbubble-outline'}
@@ -92,7 +92,7 @@ const TabLayout: React.FC = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: 'PROFILE',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'person' : 'person-outline'}

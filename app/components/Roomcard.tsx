@@ -23,7 +23,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   address
 }) => {
   return (
-    <View style={tw`bg-white rounded-lg shadow-lg mb-4`}>
+    <View style={tw`bg-white rounded-lg shadow-lg mb-5`}>
      
       <View style={tw`p-4`}>
         <View style={tw`flex-row items-center mb-2`}>
@@ -41,11 +41,11 @@ const RoomCard: React.FC<RoomCardProps> = ({
         renderItem={({ item }) => (
           <Image
             source={{ uri: item }}
-            style={tw`w-72 h-40 rounded-lg mr-2`}
+            style={tw`w-70 h-50 rounded-lg mr-2`}
           />
         )}
       />
-        <Text style={tw`text-lg font-bold mb-1`}>${rent}/month</Text>
+        <Text style={tw`text-lg font-bold my-1`}>${rent}/month</Text>
         <Text style={tw`text-gray-600 mb-1`}>{specifications}</Text>
         <Text style={tw`text-gray-500`}>{address}</Text>
       </View>
