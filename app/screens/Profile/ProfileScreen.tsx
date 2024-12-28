@@ -78,14 +78,14 @@ const ProfileScreen: React.FC = () => {
       </View>
 
       {/* Basic Info Section */}
-      <View style={tw`p-4 bg-gray-100 rounded-lg mb-4`}>
+      <View style={tw`p-4 bg-white shadow-lg rounded-lg mb-4`}>
         <Text style={tw`text-lg font-bold mb-4`}>BASIC INFO:</Text>
 
         {/* First Name and Last Name */}
         <View style={tw`mb-4`}>
           <Text style={tw`text-gray-700 mb-1`}>First Name</Text>
           <TextInput
-            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            style={tw` border border-gray-400 rounded p-2`}
             value={user.firstName}
             onChangeText={(text) => handleInputChange('firstName', text)}
           />
@@ -94,7 +94,7 @@ const ProfileScreen: React.FC = () => {
         <View style={tw`mb-4`}>
           <Text style={tw`text-gray-700 mb-1`}>Last Name</Text>
           <TextInput
-            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            style={tw` border border-gray-400 rounded p-2`}
             value={user.lastName}
             onChangeText={(text) => handleInputChange('lastName', text)}
           />
@@ -104,7 +104,7 @@ const ProfileScreen: React.FC = () => {
         <View style={tw`mb-4`}>
           <Text style={tw`text-gray-700 mb-1`}>Gender</Text>
           <TextInput
-            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            style={tw` border border-gray-400 rounded p-2`}
             value={user.gender}
             onChangeText={(text) => handleInputChange('gender', text)}
           />
@@ -113,7 +113,7 @@ const ProfileScreen: React.FC = () => {
         <View style={tw`mb-4`}>
           <Text style={tw`text-gray-700 mb-1`}>DOB (YYYY-MM-DD)</Text>
           <TextInput
-            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            style={tw` border border-gray-400 rounded p-2`}
             value={user.dob}
             onChangeText={(text) => handleInputChange('dob', text)}
           />
@@ -123,7 +123,7 @@ const ProfileScreen: React.FC = () => {
         <View style={tw`mb-4`}>
           <Text style={tw`text-gray-700 mb-1`}>Occupation</Text>
           <TextInput
-            style={tw`bg-gray-100 border border-gray-400 rounded p-2`}
+            style={tw` border border-gray-400 rounded p-2`}
             value={user.occupation}
             onChangeText={(text) => handleInputChange('occupation', text)}
           />
@@ -156,13 +156,21 @@ const ProfileScreen: React.FC = () => {
           onChangeText={setTagInput}
           onSubmitEditing={handleAddTag}
         />
-        <TouchableOpacity onPress={handleAddTag} style={tw`ml-2 bg-blue-500 p-2 rounded`}>
-          <Text style={tw`text-white`}>Add</Text>
+        <TouchableOpacity onPress={handleAddTag} style={tw`ml-2 bg-violet-500 p-2 rounded`}>
+          <Text style={tw`text-white `}>Add</Text>
         </TouchableOpacity>
       </View>
 
       {/* Save Button */}
-      <Button title="Save Profile" onPress={() => alert('Profile saved!')} />
+     <View style={tw`flex-row justify-center items-center w-full`}>
+     <TouchableOpacity
+        style={tw`bg-violet-500 py-2 w-[70%] rounded-xl flex-row text-center justify-center items-center`}
+        onPress={() => console.log('Save button pressed')}
+    >
+        <Text style={tw`text-center text-white text-lg`}>Save</Text>
+    </TouchableOpacity>
+     </View>
+
     </View>
    </ScrollView>
   );
