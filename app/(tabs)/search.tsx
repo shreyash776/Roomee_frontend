@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { View, TextInput, ScrollView, Text } from 'react-native';
 import tw from 'twrnc';
-import RoomCard from '../components/RoomCard'; // Import RoomCard component
-import { dummyData } from '../data/dummyData'; // Import dummy data
-
+import { Ionicons } from '@expo/vector-icons'; 
+import RoomCard from '../components/RoomCard'; 
+import { dummyData } from '../data/dummyData'; 
 const SearchScreen = () => {
   const [query, setQuery] = useState('');
-  const [filteredRooms, setFilteredRooms] = useState(dummyData); // Initialize with all data
-
+  const [filteredRooms, setFilteredRooms] = useState(dummyData); 
   const handleSearch = (text) => {
     setQuery(text);
 
@@ -24,11 +23,11 @@ const SearchScreen = () => {
   return (
     <View style={tw`flex-1 bg-gray-100 p-4`}>
       {/* Search Bar */}
-      <View style={tw`flex-row items-center bg-white px-4 py-3 rounded-2xl shadow-lg mb-8 mt-4`}>
-        <Ionicons name="search" size={20} color="gray" style={tw`mr-3`} />
+      <View style={tw`flex-row items-center bg-white px-4 py-2 rounded-full shadow-lg mb-8 mt-4`}>
+        <Ionicons name="search" size={24} color="violet-400" style={tw`mr-3 text-violet-600`} />
         <TextInput
           style={tw`flex-1`}
-          placeholder="Enter address..."
+          placeholder="Search location..."
           value={query}
           onChangeText={handleSearch}
         />

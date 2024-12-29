@@ -41,7 +41,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         renderItem={({ item }) => (
           <Image
             source={{ uri: item }}
-            style={tw`w-70 h-50 rounded-lg mr-2`}
+            style={tw`w-76 h-50 rounded-lg mr-2`}
           />
         )}
       />
