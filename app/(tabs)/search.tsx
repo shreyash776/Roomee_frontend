@@ -4,12 +4,12 @@ import { Ionicons } from '@expo/vector-icons';
 import tw from 'twrnc';
 import RoomCard from '../components/RoomCard'; 
 import { dummyData } from '../data/dummyData'; 
-import { useNavigation } from '@react-navigation/native'; // Import navigation hook
+import { useNavigation } from '@react-navigation/native';
 
 const SearchScreen = () => {
   const [query, setQuery] = useState('');
   const [filteredRooms, setFilteredRooms] = useState(dummyData);
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation(); 
 
   const handleSearch = (text) => {
     setQuery(text);
@@ -39,10 +39,15 @@ const SearchScreen = () => {
 
       {/* Map Button */}
       <TouchableOpacity
-        style={tw`bg-violet-600 w-12 h-12 rounded-full items-center justify-center self-end mb-6`}
-        onPress={() => navigation.navigate('Maps')} // Navigate to the Maps screen
+        style={tw`bg-violet-600 w-40 h-12 rounded-full flex-row gap-4 px-4 items-center justify-center  mb-6`}
+        onPress={() => navigation.navigate('Maps')} 
       >
-        <Ionicons name="map" size={24} color="white" />
+       <View style={tw` flex-row  items-center justify-center `} >
+       <Ionicons name="location-outline" size={24} color="white" />
+       <Text style={tw`text-white`}>Map View</Text>
+       </View>
+       <Ionicons name="arrow-forward" size={24} color="white" />
+
       </TouchableOpacity>
 
       {/* Results */}
