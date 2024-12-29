@@ -10,7 +10,7 @@ export default function RootLayout() {
       <Stack.Screen name="(auth)" options={{ headerShown: true }} />
 
       {/* Maps screen */}
-      <Stack.Screen name="Maps" options={{ headerShown: true, title: "Map View" }} />
+      {/* <Stack.Screen name="/maps" options={{ headerShown: true, title: "Map View" }} /> */}
     </Stack>
   );
 }
