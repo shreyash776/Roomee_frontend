@@ -5,11 +5,12 @@ export default function RootLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       {/* Main tabs for the application */}
       <Stack.Screen name="(tabs)" />
-      
+
       {/* Authentication screens */}
       <Stack.Screen name="(auth)" options={{ headerShown: true }} />
-      {/* <Stack.Screen name="screens/Auth/login" />
-      <Stack.Screen name="screens/Auth/signup" /> */}
+
+      {/* Maps screen */}
+      <Stack.Screen name="Maps" options={{ headerShown: true, title: "Map View" }} />
     </Stack>
   );
 }
