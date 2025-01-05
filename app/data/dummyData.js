@@ -11,7 +11,11 @@ export const dummyData = [
     specifications: 'Private Room • Three-Bedroom • Apartment',
     address: '123, Elm Street, Springfield',
     latitude: 28.632679,
-    longitude: 77.219275
+    longitude: 77.219275,
+    work: 'Software Developer at TechCorp',
+    school: 'University of California, Berkeley',
+    introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
+    tags: ['Tech Enthusiast', 'Hiker', 'Gamer']
   },
   {
     profilePic: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -25,7 +29,11 @@ export const dummyData = [
     specifications: 'Shared Room • Two-Bedroom • Condo',
     address: '456, Maple Avenue, Metropolis',
     latitude: 28.557089,
-    longitude: 77.156476
+    longitude: 77.156476,
+    work: 'Graphic Designer at Artify',
+    school: 'Rhode Island School of Design',
+    introduction: 'I’m Jane, a creative soul who loves art and traveling.',
+    tags: ['Artist', 'Traveler', 'Foodie']
   },
   {
     profilePic: 'https://images.pexels.com/photos/1022926/pexels-photo-1022926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -39,7 +47,11 @@ export const dummyData = [
     specifications: 'Entire Apartment • Two-Bedroom • Penthouse',
     address: '789, Pine Street, Gotham',
     latitude: 28.649145,
-    longitude: 77.183310
+    longitude: 77.183310,
+    work: 'Marketing Manager at BrandWorks',
+    school: 'New York University',
+    introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
+    tags: ['Yoga Lover', 'Brand Strategist', 'Minimalist']
   },
   {
     profilePic: 'https://images.pexels.com/photos/987654/pexels-photo-987654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -53,7 +65,11 @@ export const dummyData = [
     specifications: 'Private Room • Two-Bedroom • Apartment',
     address: 'D-14, South Extension, New Delhi, India',
     latitude: 28.535517,
-    longitude: 77.241339
+    longitude: 77.241339,
+    work: 'Product Manager at Innovate India',
+    school: 'IIT Delhi',
+    introduction: 'Amit here! Love creating impactful products and playing cricket.',
+    tags: ['Innovator', 'Cricket Fanatic', 'Problem Solver']
   },
   {
     profilePic: 'https://images.pexels.com/photos/654321/pexels-photo-654321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -67,48 +83,172 @@ export const dummyData = [
     specifications: 'Entire Apartment • Three-Bedroom • Luxury',
     address: '22B, Kormangala, Bangalore, India',
     latitude: 28.617245,
-    longitude: 77.208648
+    longitude: 77.208648,
+    work: 'Software Engineer at Google',
+    school: 'BMS College of Engineering',
+    introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
+    tags: ['Coder', 'Dancer', 'Foodie']
   },
   {
-    profilePic: 'https://images.pexels.com/photos/999888/pexels-photo-999888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    userName: 'Rohan Patel',
+    profilePic: 'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'John Doe',
     images: [
-      'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/634805/pexels-photo-634805.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/965117/pexels-photo-965117.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/1281121/pexels-photo-1281121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
-    rent: '15000',
-    specifications: 'Shared Room • Two-Bedroom • Semi-Furnished',
-    address: '12, C.G. Road, Ahmedabad, India',
-    latitude: 28.626391,
-    longitude: 77.373933
+    rent: '1200',
+    specifications: 'Private Room • Three-Bedroom • Apartment',
+    address: '123, Elm Street, Springfield',
+    latitude: 28.632679,
+    longitude: 77.219275,
+    work: 'Software Developer at TechCorp',
+    school: 'University of California, Berkeley',
+    introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
+    tags: ['Tech Enthusiast', 'Hiker', 'Gamer']
   },
   {
-    profilePic: 'https://images.pexels.com/photos/876456/pexels-photo-876456.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    userName: 'Pooja Singh',
+    profilePic: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Jane Smith',
     images: [
-      'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/567678/pexels-photo-567678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
-    rent: '12500',
-    specifications: 'Private Room • One-Bedroom • Apartment',
-    address: 'A-101, Gachibowli, Hyderabad, India',
-    latitude: 28.459497,
-    longitude: 77.026638
+    rent: '950',
+    specifications: 'Shared Room • Two-Bedroom • Condo',
+    address: '456, Maple Avenue, Metropolis',
+    latitude: 28.557089,
+    longitude: 77.156476,
+    work: 'Graphic Designer at Artify',
+    school: 'Rhode Island School of Design',
+    introduction: 'I’m Jane, a creative soul who loves art and traveling.',
+    tags: ['Artist', 'Traveler', 'Foodie']
   },
   {
-    profilePic: 'https://images.pexels.com/photos/542531/pexels-photo-542531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    userName: 'Kiran Gupta',
+    profilePic: 'https://images.pexels.com/photos/1022926/pexels-photo-1022926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Emily Johnson',
     images: [
-      'https://images.pexels.com/photos/785888/pexels-photo-785888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/767494/pexels-photo-767494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/834785/pexels-photo-834785.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/2029667/pexels-photo-2029667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
-    rent: '20000',
-    specifications: 'Entire Apartment • Three-Bedroom • Fully Furnished',
-    address: '45, Koregaon Park, Pune, India',
-    latitude: 28.684177,
-    longitude: 77.306900
+    rent: '1400',
+    specifications: 'Entire Apartment • Two-Bedroom • Penthouse',
+    address: '789, Pine Street, Gotham',
+    latitude: 28.649145,
+    longitude: 77.183310,
+    work: 'Marketing Manager at BrandWorks',
+    school: 'New York University',
+    introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
+    tags: ['Yoga Lover', 'Brand Strategist', 'Minimalist']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/987654/pexels-photo-987654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Amit Sharma',
+    images: [
+      'https://images.pexels.com/photos/233267/pexels-photo-233267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/278353/pexels-photo-278353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/333850/pexels-photo-333850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '18000',
+    specifications: 'Private Room • Two-Bedroom • Apartment',
+    address: 'D-14, South Extension, New Delhi, India',
+    latitude: 28.535517,
+    longitude: 77.241339,
+    work: 'Product Manager at Innovate India',
+    school: 'IIT Delhi',
+    introduction: 'Amit here! Love creating impactful products and playing cricket.',
+    tags: ['Innovator', 'Cricket Fanatic', 'Problem Solver']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/654321/pexels-photo-654321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Neha Verma',
+    images: [
+      'https://images.pexels.com/photos/156913/pexels-photo-156913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/133464/pexels-photo-133464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/257344/pexels-photo-257344.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '22000',
+    specifications: 'Entire Apartment • Three-Bedroom • Luxury',
+    address: '22B, Kormangala, Bangalore, India',
+    latitude: 28.617245,
+    longitude: 77.208648,
+    work: 'Software Engineer at Google',
+    school: 'BMS College of Engineering',
+    introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
+    tags: ['Coder', 'Dancer', 'Foodie']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Rajesh Kumar',
+    images: [
+      'https://images.pexels.com/photos/123121/pexels-photo-123121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/234543/pexels-photo-234543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/345654/pexels-photo-345654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '900',
+    specifications: 'Private Room • Studio Apartment',
+    address: 'Sector-56, Gurgaon, Haryana',
+    latitude: 28.459496,
+    longitude: 77.026638,
+    work: 'Data Scientist at AI Labs',
+    school: 'IIT Kanpur',
+    introduction: 'Rajesh here! Data enthusiast and a movie buff.',
+    tags: ['Data Geek', 'Movie Lover', 'Chess Enthusiast']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/998987/pexels-photo-998987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Sophia Lee',
+    images: [
+      'https://images.pexels.com/photos/998234/pexels-photo-998234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/567890/pexels-photo-567890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/987678/pexels-photo-987678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '3000',
+    specifications: 'Shared Room • Four-Bedroom House',
+    address: 'Downtown, Chicago, IL',
+    latitude: 41.878113,
+    longitude: -87.629799,
+    work: 'Architect at BuildTech',
+    school: 'Harvard University',
+    introduction: 'Architect by profession, traveler by passion.',
+    tags: ['Architect', 'Traveler', 'Photographer']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/889900/pexels-photo-889900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Carlos Rivera',
+    images: [
+      'https://images.pexels.com/photos/456789/pexels-photo-456789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/123345/pexels-photo-123345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/789654/pexels-photo-789654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '1800',
+    specifications: 'Entire Apartment • Two-Bedroom • Waterfront',
+    address: 'Miami Beach, Florida',
+    latitude: 25.761681,
+    longitude: -80.191788,
+    work: 'Fitness Trainer at ProFit',
+    school: 'University of Miami',
+    introduction: 'Fitness is my passion, and I love surfing!',
+    tags: ['Fitness Buff', 'Surfer', 'Nature Lover']
+  },
+  {
+    profilePic: 'https://images.pexels.com/photos/567845/pexels-photo-567845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    userName: 'Meera Patel',
+    images: [
+      'https://images.pexels.com/photos/245678/pexels-photo-245678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/234566/pexels-photo-234566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/998876/pexels-photo-998876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+    rent: '2500',
+    specifications: 'Private Room • Luxury Condo',
+    address: 'Colaba, Mumbai, India',
+    latitude: 18.921984,
+    longitude: 72.833442,
+    work: 'Investment Banker at Axis Bank',
+    school: 'IIM Ahmedabad',
+    introduction: 'Finance enthusiast with a love for beaches and books.',
+    tags: ['Banker', 'Beach Lover', 'Bookworm']
   }
 ];
