@@ -1,5 +1,5 @@
 export const dummyData = [
-  {
+  { id:1,
     profilePic: 'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'John Doe',
     images: [
@@ -17,7 +17,7 @@ export const dummyData = [
     introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
     tags: ['Tech Enthusiast', 'Hiker', 'Gamer']
   },
-  {
+  { id:2,
     profilePic: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Jane Smith',
     images: [
@@ -35,7 +35,7 @@ export const dummyData = [
     introduction: 'I’m Jane, a creative soul who loves art and traveling.',
     tags: ['Artist', 'Traveler', 'Foodie']
   },
-  {
+  { id:3,
     profilePic: 'https://images.pexels.com/photos/1022926/pexels-photo-1022926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Emily Johnson',
     images: [
@@ -53,7 +53,7 @@ export const dummyData = [
     introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
     tags: ['Yoga Lover', 'Brand Strategist', 'Minimalist']
   },
-  {
+  { id:4,
     profilePic: 'https://images.pexels.com/photos/987654/pexels-photo-987654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Amit Sharma',
     images: [
@@ -71,7 +71,7 @@ export const dummyData = [
     introduction: 'Amit here! Love creating impactful products and playing cricket.',
     tags: ['Innovator', 'Cricket Fanatic', 'Problem Solver']
   },
-  {
+  { id:5,
     profilePic: 'https://images.pexels.com/photos/654321/pexels-photo-654321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Neha Verma',
     images: [
@@ -89,7 +89,7 @@ export const dummyData = [
     introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
     tags: ['Coder', 'Dancer', 'Foodie']
   },
-  {
+  { id:6,
     profilePic: 'https://images.pexels.com/photos/247851/pexels-photo-247851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'John Doe',
     images: [
@@ -107,7 +107,7 @@ export const dummyData = [
     introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
     tags: ['Tech Enthusiast', 'Hiker', 'Gamer']
   },
-  {
+  { id:7,
     profilePic: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Jane Smith',
     images: [
@@ -125,7 +125,7 @@ export const dummyData = [
     introduction: 'I’m Jane, a creative soul who loves art and traveling.',
     tags: ['Artist', 'Traveler', 'Foodie']
   },
-  {
+  { id:8,
     profilePic: 'https://images.pexels.com/photos/1022926/pexels-photo-1022926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Emily Johnson',
     images: [
@@ -143,7 +143,7 @@ export const dummyData = [
     introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
     tags: ['Yoga Lover', 'Brand Strategist', 'Minimalist']
   },
-  {
+  { id:9,
     profilePic: 'https://images.pexels.com/photos/987654/pexels-photo-987654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Amit Sharma',
     images: [
@@ -161,7 +161,7 @@ export const dummyData = [
     introduction: 'Amit here! Love creating impactful products and playing cricket.',
     tags: ['Innovator', 'Cricket Fanatic', 'Problem Solver']
   },
-  {
+  { id:10,
     profilePic: 'https://images.pexels.com/photos/654321/pexels-photo-654321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Neha Verma',
     images: [
@@ -179,7 +179,7 @@ export const dummyData = [
     introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
     tags: ['Coder', 'Dancer', 'Foodie']
   },
-  {
+  { id:11,
     profilePic: 'https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Rajesh Kumar',
     images: [
@@ -197,7 +197,7 @@ export const dummyData = [
     introduction: 'Rajesh here! Data enthusiast and a movie buff.',
     tags: ['Data Geek', 'Movie Lover', 'Chess Enthusiast']
   },
-  {
+  { id:12,
     profilePic: 'https://images.pexels.com/photos/998987/pexels-photo-998987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Sophia Lee',
     images: [
@@ -215,7 +215,7 @@ export const dummyData = [
     introduction: 'Architect by profession, traveler by passion.',
     tags: ['Architect', 'Traveler', 'Photographer']
   },
-  {
+  { id:13,
     profilePic: 'https://images.pexels.com/photos/889900/pexels-photo-889900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Carlos Rivera',
     images: [
@@ -233,7 +233,7 @@ export const dummyData = [
     introduction: 'Fitness is my passion, and I love surfing!',
     tags: ['Fitness Buff', 'Surfer', 'Nature Lover']
   },
-  {
+  { id:14,
     profilePic: 'https://images.pexels.com/photos/567845/pexels-photo-567845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     userName: 'Meera Patel',
     images: [
