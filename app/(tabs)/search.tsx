@@ -54,7 +54,9 @@ const SearchScreen = () => {
       </TouchableOpacity>
 
       {/* Results */}
-      <ScrollView>
+      <ScrollView 
+        
+        >
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room, index) => (
             <RoomCard

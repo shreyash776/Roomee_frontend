@@ -1,4 +1,4 @@
-// app/user/[id].tsx
+
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import tw from 'twrnc';
