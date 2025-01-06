@@ -2,15 +2,15 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import tw from 'twrnc';
-import { useRouter } from 'expo-router';  // Correct hook to use for routing
+import { useRouter } from 'expo-router';  
 import { dummyData } from '../../data/dummyData';
-
+import { useLocalSearchParams } from 'expo-router';
 const UserView: React.FC = () => {
   const router = useRouter();
-  const { id } = router.params; 
+  const { id } = useLocalSearchParams();
 
   
-  const user = dummyData.find((user) => user.id === id);
+  const user = dummyData.find((user) => String(user.id) === String(id))
 
   if (!user) {
     return (
@@ -24,7 +24,7 @@ const UserView: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={tw`bg-white flex-grow px-6 py-8`}>
-      {/* Profile Image */}
+     
       <View style={tw`items-center mb-6`}>
         <Image
           source={{ uri: profilePic }}
@@ -35,25 +35,25 @@ const UserView: React.FC = () => {
         <Text style={tw`text-lg text-gray-600`}>{age} years old</Text>
       </View>
 
-      {/* Work Section */}
+     
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>Work</Text>
         <Text style={tw`text-base text-gray-700`}>{work}</Text>
       </View>
 
-      {/* School Section */}
+      
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>School</Text>
         <Text style={tw`text-base text-gray-700`}>{school}</Text>
       </View>
 
-      {/* Introduction Section */}
+     
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>Introduction</Text>
         <Text style={tw`text-base text-gray-700`}>{introduction}</Text>
       </View>
 
-      {/* Tags Section */}
+     
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>Tags</Text>
         <View style={tw`flex-row flex-wrap`}>

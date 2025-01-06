@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 import tw from 'twrnc';
 
 
-// components/RoomCard.tsx
+
 interface RoomCardProps {
   profilePic: string;
   userName: string;
@@ -41,7 +41,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         renderItem={({ item }) => (
           <Image
             source={{ uri: item }}
-            style={tw`w-76 h-50 rounded-lg mr-2`}
+            style={tw`w-78 h-60 rounded-sm mr-1`}
           />
         )}
       />

@@ -74,7 +74,7 @@ const TabLayout: React.FC = () => {
       />
 
       <Tabs.Screen
-        name="chat"
+        name="roommate"
         options={{
           title: 'ROOMMATE',
           tabBarIcon: ({ color, focused }) => (
