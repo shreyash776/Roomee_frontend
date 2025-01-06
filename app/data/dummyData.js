@@ -12,6 +12,8 @@ export const dummyData = [
     address: '123, Elm Street, Springfield',
     latitude: 28.632679,
     longitude: 77.219275,
+    age:'28',
+
     work: 'Software Developer at TechCorp',
     school: 'University of California, Berkeley',
     introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
@@ -30,6 +32,8 @@ export const dummyData = [
     address: '456, Maple Avenue, Metropolis',
     latitude: 28.557089,
     longitude: 77.156476,
+    age:'28',
+
     work: 'Graphic Designer at Artify',
     school: 'Rhode Island School of Design',
     introduction: 'I’m Jane, a creative soul who loves art and traveling.',
@@ -50,6 +54,8 @@ export const dummyData = [
     longitude: 77.183310,
     work: 'Marketing Manager at BrandWorks',
     school: 'New York University',
+    age:'28',
+
     introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
     tags: ['Yoga Lover', 'Brand Strategist', 'Minimalist']
   },
@@ -66,6 +72,8 @@ export const dummyData = [
     address: 'D-14, South Extension, New Delhi, India',
     latitude: 28.535517,
     longitude: 77.241339,
+    age:'28',
+
     work: 'Product Manager at Innovate India',
     school: 'IIT Delhi',
     introduction: 'Amit here! Love creating impactful products and playing cricket.',
@@ -85,6 +93,8 @@ export const dummyData = [
     latitude: 28.617245,
     longitude: 77.208648,
     work: 'Software Engineer at Google',
+    age:'28',
+
     school: 'BMS College of Engineering',
     introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
     tags: ['Coder', 'Dancer', 'Foodie']
@@ -102,6 +112,8 @@ export const dummyData = [
     address: '123, Elm Street, Springfield',
     latitude: 28.632679,
     longitude: 77.219275,
+    age:'28',
+
     work: 'Software Developer at TechCorp',
     school: 'University of California, Berkeley',
     introduction: 'Hey, I am John. Love coding, hiking, and gaming!',
@@ -120,6 +132,8 @@ export const dummyData = [
     address: '456, Maple Avenue, Metropolis',
     latitude: 28.557089,
     longitude: 77.156476,
+    age:'28',
+
     work: 'Graphic Designer at Artify',
     school: 'Rhode Island School of Design',
     introduction: 'I’m Jane, a creative soul who loves art and traveling.',
@@ -138,6 +152,8 @@ export const dummyData = [
     address: '789, Pine Street, Gotham',
     latitude: 28.649145,
     longitude: 77.183310,
+    age:'28',
+
     work: 'Marketing Manager at BrandWorks',
     school: 'New York University',
     introduction: 'Hi, I’m Emily. Passionate about branding and yoga.',
@@ -156,6 +172,8 @@ export const dummyData = [
     address: 'D-14, South Extension, New Delhi, India',
     latitude: 28.535517,
     longitude: 77.241339,
+    age:'28',
+
     work: 'Product Manager at Innovate India',
     school: 'IIT Delhi',
     introduction: 'Amit here! Love creating impactful products and playing cricket.',
@@ -174,6 +192,8 @@ export const dummyData = [
     address: '22B, Kormangala, Bangalore, India',
     latitude: 28.617245,
     longitude: 77.208648,
+    age:'28',
+
     work: 'Software Engineer at Google',
     school: 'BMS College of Engineering',
     introduction: 'Hi, Neha here! I enjoy coding, dancing, and exploring cuisines.',
@@ -192,6 +212,8 @@ export const dummyData = [
     address: 'Sector-56, Gurgaon, Haryana',
     latitude: 28.459496,
     longitude: 77.026638,
+    age:'28',
+
     work: 'Data Scientist at AI Labs',
     school: 'IIT Kanpur',
     introduction: 'Rajesh here! Data enthusiast and a movie buff.',
@@ -210,6 +232,8 @@ export const dummyData = [
     address: 'Downtown, Chicago, IL',
     latitude: 41.878113,
     longitude: -87.629799,
+    age:'28',
+
     work: 'Architect at BuildTech',
     school: 'Harvard University',
     introduction: 'Architect by profession, traveler by passion.',
@@ -224,6 +248,8 @@ export const dummyData = [
       'https://images.pexels.com/photos/789654/pexels-photo-789654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
     rent: '1800',
+    age:'28',
+
     specifications: 'Entire Apartment • Two-Bedroom • Waterfront',
     address: 'Miami Beach, Florida',
     latitude: 25.761681,
@@ -247,6 +273,7 @@ export const dummyData = [
     latitude: 18.921984,
     longitude: 72.833442,
     work: 'Investment Banker at Axis Bank',
+    age:'28',
     school: 'IIM Ahmedabad',
     introduction: 'Finance enthusiast with a love for beaches and books.',
     tags: ['Banker', 'Beach Lover', 'Bookworm']
