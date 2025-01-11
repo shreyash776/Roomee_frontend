@@ -24,13 +24,13 @@ const SearchScreen = () => {
     }
   };
   const navigateToMaps = () => {
-    router.push('/screens/Maps'); // Programmatically navigate to the Maps screen
+    router.push('/screens/Maps'); 
   };
 
   return (
     <View style={tw`flex-1 bg-gray-100 p-4`}>
       {/* Search Bar */}
-      <View style={tw`flex-row items-center bg-white px-4 py-2 rounded-full shadow-lg mb-4 mt-4`}>
+      <View style={tw`absolute z-20 top-2 left-0 right-0 mx-6 flex-row items-center bg-white px-4 py-2 rounded-full shadow-lg mb-4 mt-4`}>
         <Ionicons name="search" size={24} color="violet-400" style={tw`mr-3 text-violet-600`} />
         <TextInput
           style={tw`flex-1`}
@@ -42,7 +42,7 @@ const SearchScreen = () => {
 
       {/* Map Button */}
       <TouchableOpacity
-        style={tw`bg-violet-600 w-40 h-12 rounded-full flex-row gap-4 px-4 items-center justify-center  mb-6`}
+        style={tw`absolute top-23 ml-6 z-20 bg-violet-600 w-40 h-12 rounded-full flex-row gap-4 px-4 items-center justify-center  mb-6`}
         onPress={navigateToMaps} 
       >
        <View style={tw` flex-row  items-center justify-center `} >
@@ -55,19 +55,35 @@ const SearchScreen = () => {
 
       {/* Results */}
       <ScrollView 
-        
+         style={tw`pt-35`}
         >
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room, index) => (
-            <RoomCard
-              key={index}
-              profilePic={room.profilePic}
-              userName={room.userName}
-              images={room.images}
-              rent={room.rent}
-              specifications={room.specifications}
-              address={room.address}
-            />
+            <TouchableOpacity
+  key={index}
+  onPress={() =>
+    router.push({
+      pathname: `screens/room/${room.id}`, 
+      params: {
+        address: room.address,
+        profilePic: room.profilePic,
+        userName: room.userName,
+        images: JSON.stringify(room.images),
+        rent: room.rent.toString(),
+        specifications:room.specifications,  
+      }
+    })
+  }
+>
+  <RoomCard
+    profilePic={room.profilePic}
+    userName={room.userName}
+    images={room.images}
+    rent={room.rent}
+    specifications={room.specifications}
+    address={room.address}
+  />
+</TouchableOpacity>
           ))
         ) : (
           <Text style={tw`text-center text-gray-500 mt-4`}>

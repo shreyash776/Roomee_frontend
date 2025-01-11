@@ -1,76 +1,78 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useRouter, useSearchParams } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import tw from 'twrnc';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { dummyData } from '../../data/dummyData';
+import BackArrowButton from '@/app/components/BackArrowButton';
 
-type RoomParams = {
-  id: string;
-  address: string;
-  profilePic: string;
-  userName: string;
-  images: string;
-  rent: string;
-  specifications: string; 
-};
-
-const RoomDetail = () => {
+const RoomView: React.FC = () => {
   const router = useRouter();
-  const { id, address, profilePic, userName, images, rent, specifications } =
-    useSearchParams<RoomParams>();
+  const { id } = useLocalSearchParams();
+  const { width } = Dimensions.get('window'); 
+  const room = dummyData.find((room) => String(room.id) === String(id));
 
-  const roomImages = JSON.parse(images || '[]');
-  const roomSpecifications = JSON.parse(specifications || '[]');
+  if (!room) {
+    return (
+      <View style={tw`flex-1 justify-center items-center bg-white`}>
+        <Text style={tw`text-lg font-bold text-red-500`}>Room not found!</Text>
+      </View>
+    );
+  }
+  const { images, address, rent, specifications, profilePic, userName } = room;
+  console.log(images)
 
   return (
-    <View style={tw`flex-1 bg-white`}>
-      {/* Header */}
-      <View style={tw`flex-row items-center p-4 bg-violet-600`}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="white" />
-        </TouchableOpacity>
-        <Text style={tw`text-white text-lg font-bold ml-4`}>Room Details</Text>
+    <ScrollView contentContainerStyle={tw`bg-white flex-grow px-6 py-8`}>
+     
+      <BackArrowButton />
+
+     
+      <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={true} style={tw`h-30 w-full `}>
+          
+        {images.map((img, index) => (
+            
+            <Image
+          key={index} 
+          source={{ uri: img }}
+          style={[
+            tw`h-80 mr-2`,
+            { width }, 
+          ]}
+          resizeMode="cover" 
+        />
+      ))}
+         
+        
+    
+      </ScrollView>
+      
+
+      
+      <View>
+        <Text style={tw`text-2xl font-bold mb-2`}>{address}</Text>
+        <Text style={tw`text-lg text-gray-600 mb-4`}>Hosted by {userName}</Text>
+        <Text style={tw`text-xl font-bold text-green-600 mb-4`}>${rent} / month</Text>
+
+        
+        <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>Specifications:</Text>
+        {specifications ? (
+          <Text style={tw`text-gray-700 ml-2`}>{specifications}</Text> 
+        ) : (
+          <Text style={tw`text-gray-500 ml-2`}>No specifications provided.</Text>
+        )}
       </View>
 
-      <ScrollView>
-        {/* Image Carousel */}
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          style={tw`h-64`}
+     
+      <View style={tw`mt-8`}>
+        <TouchableOpacity
+          style={tw`bg-violet-500 w-full py-3 rounded-lg items-center`}
+          onPress={() => alert('Contact feature coming soon!')}
         >
-          {roomImages.map((img: string, index: number) => (
-            <Image
-              key={index}
-              source={{ uri: img }}
-              style={tw`w-full h-full`}
-              resizeMode="cover"
-            />
-          ))}
-        </ScrollView>
-
-        {/* Room Details */}
-        <View style={tw`p-4`}>
-          <Text style={tw`text-xl font-bold mb-2`}>{address}</Text>
-          <Text style={tw`text-gray-500 text-sm`}>Hosted by {userName}</Text>
-
-          <View style={tw`flex-row items-center justify-between mt-4`}>
-            <Text style={tw`text-lg font-bold`}>${rent} / month</Text>
-            <Ionicons name="pricetag" size={24} color="green" />
-          </View>
-
-          {/* Specifications */}
-          <Text style={tw`text-lg font-bold mt-4`}>Specifications:</Text>
-          {roomSpecifications.map((spec: string, index: number) => (
-            <Text key={index} style={tw`text-gray-700 ml-2 mt-1`}>
-              - {spec}
-            </Text>
-          ))}
-        </View>
-      </ScrollView>
-    </View>
+          <Text style={tw`text-white font-bold text-lg`}>Contact Host</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
-export default RoomDetail;
+export default RoomView;
