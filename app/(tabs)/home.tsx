@@ -9,7 +9,7 @@ import { dummyData } from '../data/dummyData';
 const HomeScreen: React.FC = () => {
   return (
     <ScrollView 
-      contentContainerStyle={tw`bg-white pt-12 px-6`} 
+      contentContainerStyle={tw`bg-white pt-12 px-4`} 
       showsVerticalScrollIndicator={false}
     >
       {/* Heading */}

@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import tw from 'twrnc';
 import { dummyData } from '../data/dummyData';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import BackArrowButton from '../components/BackArrowButton'; 
 
 const CustomMarker = ({ property }) => (
   <View>
@@ -58,6 +59,11 @@ const Maps: React.FC = () => {
 
   return (
     <View style={tw`flex-1`}>
+      <View style={tw`absolute top-4 left-4 z-10`}>
+
+    <BackArrowButton />
+      </View>
+  
       {location && (
         <MapView
           style={tw`flex-1`}
@@ -65,6 +71,7 @@ const Maps: React.FC = () => {
           provider="google"
           googleMapsApiKey="AIzaSyBDCOBjXnM2qViIvYzvwoMIkvf-TG-q8zw"
         >
+          
           {/* Current location marker */}
           <Marker
             coordinate={{
