@@ -22,33 +22,35 @@ const RoomView: React.FC = () => {
   console.log(images)
 
   return (
-    <ScrollView contentContainerStyle={tw`bg-white flex-grow px-6 py-8`}>
+    <ScrollView contentContainerStyle={tw`bg-white flex-grow px-2 py-3`}>
      
       <BackArrowButton />
 
      
-      <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={true} style={tw`h-30 w-full `}>
+     <View style={tw`h-80 w-full px-2 `}>
+     <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false} style={tw` w-full `}>
           
-        {images.map((img, index) => (
-            
-            <Image
-          key={index} 
-          source={{ uri: img }}
-          style={[
-            tw`h-80 mr-2`,
-            { width }, 
-          ]}
-          resizeMode="cover" 
-        />
-      ))}
-         
-        
-    
-      </ScrollView>
+          {images.map((img, index) => (
+              
+              <Image
+            key={index} 
+            source={{ uri: img }}
+            style={[
+              tw`h-80 mr-2`,
+              { width }, 
+            ]}
+            resizeMode="cover" 
+          />
+        ))}
+           
+          
+      
+        </ScrollView>
+     </View>
       
 
       
-      <View>
+      <View style={tw`px-4 mt-4`}>
         <Text style={tw`text-2xl font-bold mb-2`}>{address}</Text>
         <Text style={tw`text-lg text-gray-600 mb-4`}>Hosted by {userName}</Text>
         <Text style={tw`text-xl font-bold text-green-600 mb-4`}>${rent} / month</Text>

@@ -19,7 +19,7 @@ const HomeScreen: React.FC = () => {
 
       {/* Subtext */}
       <Text style={tw`text-base text-black mb-6`}>
-        Roomi connects you to other verified renters in your area that are looking for roommates and posting rooms you can't find anywhere else. Stop stressing and let us help you find a better place to live!
+        Roomee connects you to other verified renters in your area that are looking for roommates and posting rooms you can't find anywhere else. Stop stressing and let us help you find a better place to live!
       </Text>
 
       {/* Images */}
