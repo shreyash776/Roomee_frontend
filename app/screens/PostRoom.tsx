@@ -6,7 +6,8 @@ import {
   TextInput, 
   TouchableOpacity, 
   Image,
-  Platform 
+  Platform,
+  Alert
 } from 'react-native';
 import tw from 'twrnc';
 import * as ImagePicker from 'expo-image-picker';
@@ -20,11 +21,18 @@ interface AmenityItem {
   selected: boolean;
 }
 
+interface LocationData {
+  latitude: number;
+  longitude: number;
+  address: string;
+}
+
 const PostRoom: React.FC = () => {
   const [images, setImages] = useState<string[]>([]);
   const [rent, setRent] = useState('');
   const [description, setDescription] = useState('');
   const [address, setAddress] = useState('');
+  const [location, setLocation] = useState<LocationData | null>(null);
   const [specifications, setSpecifications] = useState('');
   const [amenities, setAmenities] = useState<AmenityItem[]>([
     { name: 'WiFi', icon: 'wifi', iconFamily: 'Ionicons', selected: false },
@@ -41,7 +49,7 @@ const PostRoom: React.FC = () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
     
     if (permissionResult.granted === false) {
-      alert('Permission to access camera roll is required!');
+      Alert.alert('Permission Required', 'Please allow access to your photo library to select images.');
       return;
     }
 
@@ -58,22 +66,41 @@ const PostRoom: React.FC = () => {
   };
 
   const getCurrentLocation = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    
-    if (status !== 'granted') {
-      alert('Permission to access location was denied');
-      return;
-    }
+    try {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission Denied',
+          'Please enable location services to use this feature',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
 
-    const location = await Location.getCurrentPositionAsync({});
-    const address = await Location.reverseGeocodeAsync({
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-    });
+      const position = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High
+      });
 
-    if (address[0]) {
-      const formattedAddress = `${address[0].street}, ${address[0].city}, ${address[0].region}`;
-      setAddress(formattedAddress);
+      const { latitude, longitude } = position.coords;
+      
+      const addressResponse = await Location.reverseGeocodeAsync({
+        latitude,
+        longitude
+      });
+
+      if (addressResponse[0]) {
+        const formattedAddress = `${addressResponse[0].street || ''}, ${addressResponse[0].city || ''}, ${addressResponse[0].region || ''}`;
+        
+        setLocation({
+          latitude,
+          longitude,
+          address: formattedAddress
+        });
+        setAddress(formattedAddress);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to get location. Please try again.');
     }
   };
 
@@ -92,6 +119,43 @@ const PostRoom: React.FC = () => {
       case 'FontAwesome5':
         return <FontAwesome5 name={amenity.icon as any} size={24} color={amenity.selected ? 'white' : '#8B5CF6'} />;
     }
+  };
+
+  const handleSubmit = () => {
+    // Validate form
+    if (images.length === 0) {
+      Alert.alert('Error', 'Please add at least one room image');
+      return;
+    }
+    if (!rent) {
+      Alert.alert('Error', 'Please enter the monthly rent');
+      return;
+    }
+    if (!description) {
+      Alert.alert('Error', 'Please provide a room description');
+      return;
+    }
+    if (!location) {
+      Alert.alert('Error', 'Please set the room location');
+      return;
+    }
+    if (!specifications) {
+      Alert.alert('Error', 'Please enter room specifications');
+      return;
+    }
+
+    // Create form data
+    const formData = {
+      images,
+      rent: parseInt(rent),
+      description,
+      location,
+      specifications,
+      amenities: amenities.filter(a => a.selected).map(a => a.name)
+    };
+
+    // Here you would typically send formData to your backend
+    console.log('Form Data:', formData);
   };
 
   return (
@@ -149,7 +213,10 @@ const PostRoom: React.FC = () => {
             style={tw`flex-1 border border-gray-300 rounded-lg p-3 mr-2`}
             placeholder="Enter address"
             value={address}
-            onChangeText={setAddress}
+            onChangeText={(text) => {
+              setAddress(text);
+              setLocation(null);
+            }}
           />
           <TouchableOpacity 
             onPress={getCurrentLocation}
@@ -158,6 +225,11 @@ const PostRoom: React.FC = () => {
             <Ionicons name="location" size={24} color="white" />
           </TouchableOpacity>
         </View>
+        {location && (
+          <Text style={tw`text-gray-500 mt-1 text-sm`}>
+            Coordinates: {location.latitude.toFixed(6)}, {location.longitude.toFixed(6)}
+          </Text>
+        )}
       </View>
 
       {/* Specifications Section */}
@@ -199,9 +271,7 @@ const PostRoom: React.FC = () => {
       {/* Submit Button */}
       <TouchableOpacity 
         style={tw`bg-violet-600 rounded-lg p-4 items-center mb-6`}
-        onPress={() => {
-          // Handle form submission
-        }}
+        onPress={handleSubmit}
       >
         <Text style={tw`text-white font-bold text-lg`}>Post Room</Text>
       </TouchableOpacity>
