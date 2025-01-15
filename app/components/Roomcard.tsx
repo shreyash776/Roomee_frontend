@@ -1,9 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
-import { FlatList } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
-
-
 
 interface RoomCardProps {
   profilePic: string;
@@ -12,6 +10,7 @@ interface RoomCardProps {
   rent: string;
   specifications: string;
   address: string;
+  onPress: () => void; 
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({
@@ -20,34 +19,51 @@ const RoomCard: React.FC<RoomCardProps> = ({
   images,
   rent,
   specifications,
-  address
+  address,
+  onPress,
 }) => {
   return (
     <View style={tw`bg-white rounded-lg shadow-lg mb-5`}>
-     
+      {/* Header */}
       <View style={tw`p-4`}>
         <View style={tw`flex-row items-center mb-2`}>
           <Image
             source={{ uri: profilePic }}
             style={tw`w-10 h-10 rounded-full mr-2`}
           />
-          <Text style={tw`font-bold`}>{userName}</Text>
+          <Text style={tw`font-bold text-lg`}>{userName}</Text>
         </View>
+
+        {/* Images */}
         <FlatList
-        horizontal
-        data={images}
-        keyExtractor={(item, index) => `${item}-${index}`}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <Image
-            source={{ uri: item }}
-            style={tw`w-78 h-60 rounded-sm mr-1`}
-          />
-        )}
-      />
-        <Text style={tw`text-lg font-bold my-1`}>${rent}/month</Text>
+          horizontal
+          data={images}
+          keyExtractor={(item, index) => `${item}-${index}`}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <Image
+              source={{ uri: item }}
+              style={tw`w-78 h-60 rounded-sm mr-2`}
+              resizeMode="cover"
+            />
+          )}
+        />
+
+        {/* Details */}
+        <Text style={tw`text-lg font-bold my-2 text-black`}>
+          ${rent}/month
+        </Text>
         <Text style={tw`text-gray-600 mb-1`}>{specifications}</Text>
-        <Text style={tw`text-gray-500`}>{address}</Text>
+        <Text style={tw`text-gray-500 mb-3`}>{address}</Text>
+
+        {/* Clickable Section */}
+        <TouchableOpacity
+  onPress={onPress}
+  style={tw`bg-violet-600 rounded-xl w-30 flex-row items-center justify-center py-2 px-3`}
+>
+  <Text style={tw`text-white font-bold text-center mr-2`}>View Details</Text>
+  <Ionicons name="arrow-forward-circle" size={22} color="white" />
+</TouchableOpacity>
       </View>
     </View>
   );

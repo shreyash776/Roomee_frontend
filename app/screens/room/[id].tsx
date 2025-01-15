@@ -28,7 +28,7 @@ const RoomView: React.FC = () => {
 
      
      <View style={tw`h-80 w-full px-2 `}>
-     <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false} style={tw` w-full `}>
+     <ScrollView horizontal  showsHorizontalScrollIndicator={false} style={tw` w-full `}>
           
           {images.map((img, index) => (
               
@@ -36,7 +36,7 @@ const RoomView: React.FC = () => {
             key={index} 
             source={{ uri: img }}
             style={[
-              tw`h-80 mr-2`,
+              tw`h-80 mr-1`,
               { width }, 
             ]}
             resizeMode="cover" 
@@ -58,7 +58,7 @@ const RoomView: React.FC = () => {
         
         <Text style={tw`text-lg font-bold text-gray-800 mb-2`}>Specifications:</Text>
         {specifications ? (
-          <Text style={tw`text-gray-700 ml-2`}>{specifications}</Text> 
+          <Text style={tw`text-gray-700  ml-2`}>{specifications}</Text> 
         ) : (
           <Text style={tw`text-gray-500 ml-2`}>No specifications provided.</Text>
         )}

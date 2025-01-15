@@ -54,43 +54,36 @@ const SearchScreen = () => {
       </TouchableOpacity>
 
       {/* Results */}
-      <ScrollView 
-         style={tw`pt-35`}
-        >
-        {filteredRooms.length > 0 ? (
-          filteredRooms.map((room, index) => (
-            <TouchableOpacity
-  key={index}
-  onPress={() =>
-    router.push({
-      pathname: `screens/room/${room.id}`, 
-      params: {
-        address: room.address,
-        profilePic: room.profilePic,
-        userName: room.userName,
-        images: JSON.stringify(room.images),
-        rent: room.rent.toString(),
-        specifications:room.specifications,  
-      }
-    })
-  }
->
-  <RoomCard
-    profilePic={room.profilePic}
-    userName={room.userName}
-    images={room.images}
-    rent={room.rent}
-    specifications={room.specifications}
-    address={room.address}
-  />
-</TouchableOpacity>
-          ))
-        ) : (
-          <Text style={tw`text-center text-gray-500 mt-4`}>
-            No results found.
-          </Text>
-        )}
-      </ScrollView>
+      <ScrollView style={tw`pt-35`}>
+  {filteredRooms.length > 0 ? (
+    filteredRooms.map((room, index) => (
+      <RoomCard
+        key={index}
+        profilePic={room.profilePic}
+        userName={room.userName}
+        images={room.images}
+        rent={room.rent}
+        specifications={room.specifications}
+        address={room.address}
+        onPress={() =>
+          router.push({
+            pathname: `screens/room/${room.id}`,
+            params: {
+              address: room.address,
+              profilePic: room.profilePic,
+              userName: room.userName,
+              images: JSON.stringify(room.images),
+              rent: room.rent.toString(),
+              specifications: room.specifications,
+            },
+          })
+        }
+      />
+    ))
+  ) : (
+    <Text style={tw`text-center text-gray-500 mt-4`}>No results found.</Text>
+  )}
+</ScrollView>
     </View>
   );
 };
