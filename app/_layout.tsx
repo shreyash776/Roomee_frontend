@@ -1,16 +1,32 @@
 import { Stack } from "expo-router";
+import { useEffect } from "react";
+import { Redirect } from "expo-router";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      {/* Main tabs for the application */}
-      <Stack.Screen name="(tabs)" />
-
-      {/* Authentication screens */}
-      <Stack.Screen name="(auth)" options={{ headerShown: true }} />
-
-      {/* Maps screen */}
-      {/* <Stack.Screen name="/maps" options={{ headerShown: true, title: "Map View" }} /> */}
-    </Stack>
+    <>
+      {/* Initial redirect to auth/signup */}
+      <Redirect href="/(auth)/signup" />
+      
+      <Stack screenOptions={{ headerShown: false }}>
+        {/* Auth Group */}
+        <Stack.Screen 
+          name="(auth)" 
+          options={{ 
+            headerShown: false,
+            gestureEnabled: false 
+          }} 
+        />
+        
+        {/* Main tabs Group */}
+        <Stack.Screen 
+          name="(tabs)" 
+          options={{ 
+            headerShown: false,
+            gestureEnabled: false 
+          }} 
+        />
+      </Stack>
+    </>
   );
 }
