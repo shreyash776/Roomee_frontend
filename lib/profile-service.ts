@@ -2,23 +2,38 @@ import { api } from './api-client';
 import { endpoints } from './api';
 
 export interface ProfileData {
-  id: string;
-  name: string;
-  email: string;
-  
+  firstName: string;
+  lastName: string;
+  gender: string;
+  dateOfBirth: string;
+  workTitle: string;
+  schoolName: string;
+  lifestyleTags: string[];
+  user: string; // User ID reference
 }
 
-export interface UpdateProfileRequest {
-  name?: string;
-  
+export interface CreateProfileRequest {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  dateOfBirth: string;
+  workTitle?: string;
+  schoolName?: string;
+  lifestyleTags?: string[];
+}
+
+export interface ProfileResponse {
+  success: boolean;
+  data: ProfileData;
+  message?: string;
 }
 
 export const profileService = {
-  getProfile: async (): Promise<ProfileData> => {
-    return await api.get<ProfileData>(endpoints.profile.getProfile);
+  createOrUpdateProfile: async (profileData: CreateProfileRequest): Promise<ProfileResponse> => {
+    return await api.post<ProfileResponse>(endpoints.profile.create, profileData);
   },
   
-  updateProfile: async (data: UpdateProfileRequest): Promise<ProfileData> => {
-    return await api.put<ProfileData>(endpoints.profile.updateProfile, data);
+  getProfile: async (): Promise<ProfileResponse> => {
+    return await api.get<ProfileResponse>(endpoints.profile.get);
   }
 };
