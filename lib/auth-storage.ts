@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const TOKEN_KEY = 'auth_token';
+const TOKEN_KEY = 'authToken'; // Changed to match AuthContext
 const USER_KEY = 'user_data';
 
 // Token management

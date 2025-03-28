@@ -9,21 +9,22 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { router } from "expo-router";
-import { authService } from "../../lib/auth-service";
+import { useAuth } from "../../context/AuthContext";
+import { authService, SignupRequest } from "../../lib/auth-service";
 
-export default function SignUp() {
+const SignUp = () => {
+  const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
-    
+    const newErrors: { [key: string]: string } = {};
+
     if (!name.trim()) newErrors.name = "Name is required";
-    
     if (!email.trim()) {
       newErrors.email = "Email is required";
     } else {
@@ -32,7 +33,6 @@ export default function SignUp() {
         newErrors.email = "Please enter a valid email";
       }
     }
-    
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 8) {
@@ -43,47 +43,46 @@ export default function SignUp() {
         newErrors.password = "Password must include uppercase, lowercase, number, and special character";
       }
     }
-    
     if (password !== confirmPassword) {
       newErrors.confirmPassword = "Passwords don't match";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSignUp = async () => {
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
-    
+
+    // Prepare user data for signup
+    const userData: SignupRequest = { name, email, password };
+
     try {
-      const response = await authService.signup({
-        name,
-        email,
-        password
-      });
-      
-      if (response.success) {
+      // Call signup method from authService
+      const response = await authService.signup(userData);
+
+      if (response.success && response.token) {
+        await login(response.token); // Save token & set auth state
+        //console the token
+        console.log("Token before decoding:", response.token);
         Alert.alert("Success", "Account created successfully!");
         router.replace("/(tabs)");
       } else {
         Alert.alert("Error", response.error || "Failed to create account");
       }
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.error || 
-                          error.message || 
-                          "Something went wrong. Please try again.";
-      Alert.alert("Error", errorMessage);
+    } catch (error) {
+      Alert.alert("Error", "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
-
+ 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Create Account</Text>
-      
+
       <TextInput
         style={[styles.input, errors.name ? styles.inputError : null]}
         placeholder="Full Name"
@@ -101,7 +100,7 @@ export default function SignUp() {
         autoCapitalize="none"
       />
       {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-      
+
       <TextInput
         style={[styles.input, errors.password ? styles.inputError : null]}
         placeholder="Password"
@@ -119,30 +118,23 @@ export default function SignUp() {
         secureTextEntry
       />
       {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
-      
+
       <TouchableOpacity 
         style={styles.button} 
         onPress={handleSignUp}
         disabled={isLoading}
       >
-        {isLoading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.buttonText}>Sign Up</Text>
-        )}
+        {isLoading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Sign Up</Text>}
       </TouchableOpacity>
-      
-      <TouchableOpacity 
-        style={styles.linkButton}
-        onPress={() => router.push("/(auth)/login")}
-      >
-        <Text style={styles.linkText}>
-          Already have an account? Login
-        </Text>
+
+      <TouchableOpacity style={styles.linkButton} onPress={() => router.push("/(auth)/login")}>
+        <Text style={styles.linkText}>Already have an account? Login</Text>
       </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {

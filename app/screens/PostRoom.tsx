@@ -6,13 +6,14 @@ import {
   TextInput, 
   TouchableOpacity, 
   Image,
-  Platform,
-  Alert
+  Alert,
+  ActivityIndicator
 } from 'react-native';
 import tw from 'twrnc';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import * as Location from 'expo-location';
+import { roomService } from '../../lib/room-service';
 
 interface AmenityItem {
   name: string;
@@ -44,6 +45,7 @@ const PostRoom: React.FC = () => {
     { name: 'Security', icon: 'security', iconFamily: 'MaterialCommunityIcons', selected: false },
     { name: 'Gym', icon: 'dumbbell', iconFamily: 'FontAwesome5', selected: false },
   ]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const pickImages = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -70,11 +72,7 @@ const PostRoom: React.FC = () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       
       if (status !== 'granted') {
-        Alert.alert(
-          'Permission Denied',
-          'Please enable location services to use this feature',
-          [{ text: 'OK' }]
-        );
+        Alert.alert('Permission Denied', 'Please enable location services to use this feature');
         return;
       }
 
@@ -84,10 +82,7 @@ const PostRoom: React.FC = () => {
 
       const { latitude, longitude } = position.coords;
       
-      const addressResponse = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude
-      });
+      const addressResponse = await Location.reverseGeocodeAsync({ latitude, longitude });
 
       if (addressResponse[0]) {
         const formattedAddress = `${addressResponse[0].street || ''}, ${addressResponse[0].city || ''}, ${addressResponse[0].region || ''}`;
@@ -105,62 +100,90 @@ const PostRoom: React.FC = () => {
   };
 
   const toggleAmenity = (index: number) => {
-    const newAmenities = [...amenities];
-    newAmenities[index].selected = !newAmenities[index].selected;
-    setAmenities(newAmenities);
+    setAmenities(prevAmenities => 
+      prevAmenities.map((amenity, i) => 
+        i === index ? { ...amenity, selected: !amenity.selected } : amenity
+      )
+    );
   };
 
   const renderAmenityIcon = (amenity: AmenityItem) => {
-    switch (amenity.iconFamily) {
-      case 'Ionicons':
-        return <Ionicons name={amenity.icon as any} size={24} color={amenity.selected ? 'white' : '#8B5CF6'} />;
-      case 'MaterialCommunityIcons':
-        return <MaterialCommunityIcons name={amenity.icon as any} size={24} color={amenity.selected ? 'white' : '#8B5CF6'} />;
-      case 'FontAwesome5':
-        return <FontAwesome5 name={amenity.icon as any} size={24} color={amenity.selected ? 'white' : '#8B5CF6'} />;
-    }
+    const IconComponent = 
+      amenity.iconFamily === 'Ionicons' ? Ionicons :
+      amenity.iconFamily === 'MaterialCommunityIcons' ? MaterialCommunityIcons :
+      FontAwesome5;
+    
+    return <IconComponent name={amenity.icon as any} size={24} color={amenity.selected ? 'white' : '#8B5CF6'} />;
   };
 
-  const handleSubmit = () => {
-    // Validate form
-    if (images.length === 0) {
-      Alert.alert('Error', 'Please add at least one room image');
-      return;
-    }
-    if (!rent) {
-      Alert.alert('Error', 'Please enter the monthly rent');
-      return;
-    }
-    if (!description) {
-      Alert.alert('Error', 'Please provide a room description');
-      return;
-    }
-    if (!location) {
-      Alert.alert('Error', 'Please set the room location');
-      return;
-    }
-    if (!specifications) {
-      Alert.alert('Error', 'Please enter room specifications');
+  const handleSubmit = async () => {
+    if (images.length === 0 || !rent || !description || !location || !specifications) {
+      Alert.alert('Error', 'Please fill in all required fields');
       return;
     }
 
-    // Create form data
-    const formData = {
-      images,
-      rent: parseInt(rent),
-      description,
-      location,
-      specifications,
-      amenities: amenities.filter(a => a.selected).map(a => a.name)
-    };
+    if (!location?.latitude || !location?.longitude) {
+      Alert.alert('Error', 'Please set location using the location button');
+      return;
+    }
+  
+    const formData = new FormData();
+  
+    // Add images
+    images.forEach((uri, index) => {
+      formData.append('images', {
+        uri,
+        type: 'image/jpeg',
+        name: `image_${index}.jpg`
+      } as any);
+    });
+  
+    // Add coordinates directly to form data
+    formData.append('latitude', location.latitude.toString());
+    formData.append('longitude', location.longitude.toString());
+  
+    // Add other fields
+    formData.append('address', JSON.stringify({
+      street: address,
+      city: '', // Add actual values from reverse geocoding
+      state: '',
+      zipCode: '',
+      country: ''
+    }));
+    
+    formData.append('amenities', JSON.stringify(
+      amenities.filter(a => a.selected).map(a => a.name)
+    ));
+    formData.append('rent', rent);
+    formData.append('description', description);
+    formData.append('specifications', specifications);
 
-    // Here you would typically send formData to your backend
-    console.log('Form Data:', formData);
+    setIsSubmitting(true);
+    try {
+      const response = await roomService.createRoom(formData);
+      if (response.success) {
+        Alert.alert('Success', 'Room posted successfully!');
+        // Reset form
+        setImages([]);
+        setRent('');
+        setDescription('');
+        setAddress('');
+        setLocation(null);
+        setSpecifications('');
+        setAmenities(amenities.map(a => ({ ...a, selected: false })));
+      } else {
+        Alert.alert('Error', response.error || 'Failed to post room');
+      }
+    } catch (error) {
+      console.error('Error posting room:', error);
+      Alert.alert('Error', 'An unexpected error occurred while posting the room');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <ScrollView style={tw`flex-1 bg-white p-4`}>
-      {/* Images Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Room Images</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -180,7 +203,6 @@ const PostRoom: React.FC = () => {
         </ScrollView>
       </View>
 
-      {/* Rent Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Monthly Rent</Text>
         <TextInput
@@ -192,7 +214,6 @@ const PostRoom: React.FC = () => {
         />
       </View>
 
-      {/* Description Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Description</Text>
         <TextInput
@@ -205,7 +226,6 @@ const PostRoom: React.FC = () => {
         />
       </View>
 
-      {/* Address Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Address</Text>
         <View style={tw`flex-row`}>
@@ -232,7 +252,6 @@ const PostRoom: React.FC = () => {
         )}
       </View>
 
-      {/* Specifications Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Specifications</Text>
         <TextInput
@@ -243,7 +262,6 @@ const PostRoom: React.FC = () => {
         />
       </View>
 
-      {/* Amenities Section */}
       <View style={tw`mb-6`}>
         <Text style={tw`text-lg font-bold mb-2`}>Amenities</Text>
         <View style={tw`flex-row flex-wrap`}>
@@ -268,12 +286,16 @@ const PostRoom: React.FC = () => {
         </View>
       </View>
 
-      {/* Submit Button */}
       <TouchableOpacity 
-        style={tw`bg-violet-600 rounded-lg p-4 items-center mb-6`}
+        style={tw`bg-violet-600 rounded-lg p-4 items-center mb-6 ${isSubmitting ? 'opacity-50' : ''}`}
         onPress={handleSubmit}
+        disabled={isSubmitting}
       >
-        <Text style={tw`text-white font-bold text-lg`}>Post Room</Text>
+        {isSubmitting ? (
+          <ActivityIndicator color="white" />
+        ) : (
+          <Text style={tw`text-white font-bold text-lg`}>Post Room</Text>
+        )}
       </TouchableOpacity>
     </ScrollView>
   );
